@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    
+    <style>
+        body{
+            min-height: 100vh;
+            background: linear-gradient(333deg, rgba(78,74,148,1) 0%, rgba(31, 29, 28, 0.877) 49%, rgba(34,48,51,1) 100%);
+            justify-content: center;
+            display: flex;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .conatainer{
+            background-color: rgba(240, 248, 255, 0.103);
+            padding: 10px;
+            border-radius: 10px;
+            width: 300px;
+            height: 380px;
+        }
+        input{
+            
+            width: 100%;
+            height: 50px;
+            margin:7px;
+            padding: 5px;
+            font-size: 2rem;
+            background-color:transparent;
+            border: none;
+            color: aliceblue;
+            outline: none;
+        }
+        button {
+            cursor: pointer;
+            border: 1px solid #edf2f507;
+            background-color: transparent;
+            height: 50px;
+            width: 63px;
+            color: #3498db;
+            font-size: 1.5em;
+            box-shadow: 0 6px 6px rgba(2, 188, 245, 0.062);
+            margin: 2px;border-radius: 8px;
+        }
+        button:hover{
+            background-color: #edf2f51e;
+            color: black;
+            border-radius: 8px;
+        }
+        .major{
+        background-color: rgba(255, 0, 0, 0.199);
+        }
+        .major:hover{
+            background-color: #edf2f51e;
+            color: black;
+            border-radius: 8px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+   
+    <div class="conatainer">
+        <div class="input">
+            <input type="text" name="" disabled id="result" >
+        </div>
+        <div class="numbers">
+            <table>  
+                <tr>
+                    <td><button onclick="inse('7')">7</button></td>
+                    <td><button onclick="inse('8')">8</button></td>
+                    <td><button onclick="inse('9')">9</button></td>
+                    <td><button onclick="inse('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inse('4')">4</button></td>
+                    <td><button onclick="inse('5')">5</button></td>
+                    <td><button onclick="inse('6')">6</button></td>
+                    <td><button onclick="inse('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inse('1')">1</button></td>
+                    <td><button onclick="inse('2')">2</button></td>
+                    <td><button onclick="inse('3')">3</button></td>
+                    <td><button onclick="inse('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inse('0')">0</button></td>
+                    <td><button onclick="inse('.')">.</button></td>
+                    <td><button onclick="del()">c</button></td>
+                    <td><button onclick="inse('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button onclick="calc()" class="major" style="width: 120px;">=</button></td>
+                    <td colspan="1"><button onclick="del()" class="major" style="width: 60px;">AC</button></td>
+                </tr>    
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    function inse(n) {
+  let x = document.getElementById("result");
+  let v = x.value;
+  x.value = v + n;
+  string = x.value;
+}
+function del() {
+  let x = document.getElementById("result");
+  x.value = '';
+}
+let string = "0";
+function calc() {
+  let result = eval(string);
+  let x = document.getElementById("result");
+  x.value = result;
+  string.value ="";
+} 
+</script>
+</html>
