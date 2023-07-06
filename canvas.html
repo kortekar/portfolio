@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Example</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+      background-color: aliceblue;
+    }
+    button{
+        padding: 10px;
+        width: 180px;
+        background-color: rgb(4, 4, 4);
+        color: rgb(252, 252, 252);
+        text-transform: capitalize;
+        font-size: 20px;
+        border-radius: 10px;font-weight: 600;
+    }
+    li{
+        color: rgb(17, 10, 5);
+    }
+    body{
+        background-color: rgba(127, 255, 212, 0.459);
+    }
+  </style>
+</head>
+<body>
+    
+    <h3>
+        <ul>
+            <li>Click buttons to draw circles </li>
+            <li>After drawing the circles click on circles to see the change</li>
+            <li>Click on reset to reset the Canvas</li>
+            <li style="color: rgba(255, 0, 0, 0.74);">Page is not responsive</li>
+        </ul>
+    </h3>
+  <canvas id="myCanvas" width="800" height="600"></canvas>
+<br>
+
+ <button onclick="ret()" style="background-color: red;color: black;">RESET</button>
+  <script >
+    const canvas = document.getElementById('myCanvas');
+    const c = canvas.getContext('2d');
+    const Rad =50; 
+    const color = [ 'black','red','yellow','blue','green'];
+      
+    
+    function draw(i) {
+        const cx = 100;
+        const cy = 100 * (i);
+        const lx = 500 ;
+        const ly = 100*i;
+       
+        c.beginPath(); //circle
+        c.arc(cx, cy, 50, 0, 2 * Math.PI, false);
+        c.fillStyle = color[i];
+        c.fill();
+        c.lineWidth = 2;
+        c.strokeStyle = 'black';
+        c.stroke();
+        
+        c.moveTo(lx,ly);// line starts here
+        c.lineTo(lx-100,ly);
+        c.stroke();
+    }
+    const circles = [
+        { cx: 100, cy: 110 },
+        { cx: 100, cy: 220 },
+        { cx: 100, cy: 330 },
+        { cx: 100, cy: 440 }
+      ];//circle points for reference
+    
+    function circle(){
+        for(let i=1;i<=4;i++){
+            draw(i);
+        }
+    }
+    
+    
+    function ret(){
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        circle();
+    }
+    canvas.addEventListener('click', cc);
+    function cc(event) {
+        const rect = canvas.getBoundingClientRect();
+        const CLx = event.clientX - rect.left;
+        const CLy = event.clientY - rect.top;
+      
+        circles.forEach(circle => {
+          const distance = Math.sqrt((CLx - circle.cx) ** 2 + (CLy - circle.cy) ** 2);
+          if (distance <= Rad) {
+            console.log('Clicked circle:', circle);
+            if(circle.cx== 100  && circle.cy ==  110  ){
+                
+               ML(1); //which circle number should be changed
+            }
+            else if (circle.cx== 100  && circle.cy ==  220 ){
+        
+                ML(2);
+            }
+            else if (circle.cx== 100  && circle.cy ==  330 ){
+        
+                ML(3);
+            }
+            else if(circle.cx== 100  && circle.cy ==  440 ){
+                ML(4);
+            }
+          }
+        });
+    }
+    
+    const lines = [
+        { sx: 500, sy: 100, ex: 150, ey: 100 },
+        { sx: 500, sy: 200, ex: 150, ey: 200 },
+        { sx: 500, sy: 300, ex: 150, ey: 300 },
+        { sx: 500, sy: 400, ex: 150, ey: 400 }
+      ];  //for refernce
+      
+    function ML(o) {
+        let IX = lines[o-1].sx; //points of lines
+        let IY = lines[o-1].sy;
+        const endX = lines[o-1].ex; //end
+        const endY = lines[o-1].ey;
+        const num = o;
+        
+        function animate() {
+          c.beginPath();
+          c.moveTo(IX, IY);
+          c.lineTo(endX, endY);
+          c.stroke();
+          IX -= 10;
+          if (IX >= endX && IY >= endY) {
+            return;
+          }
+          requestAnimationFrame(animate);
+        }
+        function draw1(i) {
+            const cx = 100;
+            const cy = 100 * (i);
+            const lx = 500 ;
+            const ly = 100*i;
+            // code for circle black
+            c.beginPath();
+            c.arc(cx, cy, 50, 0, 2 * Math.PI, false);
+            c.fillStyle = 'black';
+            c.fill();
+            c.lineWidth = 2;
+            c.strokeStyle = 'black';
+            c.stroke();
+        }
+      
+        animate();
+        draw1(num);
+      }
+    circle();
+    
+    
+    </script>
+</body>
+</html>
