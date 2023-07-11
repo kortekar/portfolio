@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #clouds {
+            padding: 100px 0;
+            width: 100%;
+            z-index: -10;
+            height: 100vh;
+            background: #c9dbe9;
+            background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+            background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+            background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+        }
+
+        .cloud {
+            width: 200px;
+            height: 60px;
+            background: #fffcfcb9;
+            border-radius: 200px;
+            position: relative;
+        }
+
+        .cloud:before,
+        .cloud:after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 100px;
+            height: 80px;
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            border-radius: 100px;
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+
+        .cloud:after {
+            width: 120px;
+            height: 120px;
+            top: -55px;
+            left: auto;
+            right: 15px;
+        }
+
+        .x1 {
+            -webkit-animation: moveclouds 15s linear infinite;
+            -moz-animation: moveclouds 15s linear infinite;
+            -o-animation: moveclouds 15s linear infinite;
+        }
+
+        .x2 {
+            left: 200px;
+            -webkit-transform: scale(0.6);
+            -moz-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.6;
+            -webkit-animation: moveclouds 25s linear infinite;
+            -moz-animation: moveclouds 25s linear infinite;
+            -o-animation: moveclouds 25s linear infinite;
+        }
+
+        .x3 {
+            left: -250px;
+            top: -200px;
+            -webkit-transform: scale(0.8);
+            -moz-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.8;
+            -webkit-animation: moveclouds 20s linear infinite;
+            -moz-animation: moveclouds 20s linear infinite;
+            -o-animation: moveclouds 20s linear infinite;
+        }
+
+        .x4 {
+            left: 470px;
+            top: -250px;
+            -webkit-transform: scale(0.75);
+            -moz-transform: scale(0.75);
+            transform: scale(0.75);
+            opacity: 0.75;
+            -webkit-animation: moveclouds 18s linear infinite;
+            -moz-animation: moveclouds 18s linear infinite;
+            -o-animation: moveclouds 18s linear infinite;
+        }
+
+        .x5 {
+            left: -150px;
+            top: -150px;
+            -webkit-transform: scale(0.8);
+            -moz-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.8;
+            -webkit-animation: moveclouds 20s linear infinite;
+            -moz-animation: moveclouds 20s linear infinite;
+            -o-animation: moveclouds 20s linear infinite;
+        }
+
+        @-webkit-keyframes moveclouds {
+            0% {
+                margin-left: 1000px;
+            }
+
+            100% {
+                margin-left: -1000px;
+            }
+        }
+
+        @-moz-keyframes moveclouds {
+            0% {
+                margin-left: 1000px;
+            }
+
+            100% {
+                margin-left: -1000px;
+            }
+        }
+
+        @-o-keyframes moveclouds {
+            0% {
+                margin-left: 1000px;
+            }
+
+            100% {
+                margin-left: -1000px;
+            }
+        }
+
+        .box {
+            width: 98%;
+            height: 400px;
+            margin: 10px;
+            max-width: 400px;
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.253);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.281);
+            position: absolute;
+            z-index: 100;
+            top: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #c9dbe9a4;
+            border-radius: 5px;
+            outline: none;
+            color: black;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        input::placeholder {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4e54c8bd;
+            color: #181616;
+            font-weight: 700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #loading {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        #display {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: 90%;
+                margin: 10px auto;
+                height: 500px;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            input {
+                font-size: 1rem;
+            }
+            .box {
+                width: 98%;
+                margin: 5px auto;
+                height: 500px;
+            }
+            button {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 36px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+    <div class="box">
+        <div id="app">
+            <h1>Live Weather</h1>
+            <input type="text" v-model="userLocation" placeholder="Enter location">
+            <button @click="fetchWeatherData">Get Weather</button>
+            <div v-if="loading" id="loading">Loading weather information...</div>
+            <div v-else id="display">
+                <h2>{{ location }}</h2>
+                <h3>{{ temperature }}°C</h3>
+                <p>{{ description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    userLocation: '',
+                    location: '',
+                    temperature: 0,
+                    description: '',
+                    loading: false,
+                };
+            },
+            methods: {
+                fetchWeatherData() {
+                    this.loading = true;
+
+                    const apiKey = '0442c803d2c3dccb1c8b3a171baddf20';
+                    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.userLocation}&appid=${apiKey}&units=metric`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.location = data.name;
+                            this.temperature = data.main.temp;
+                            this.description = data.weather[0].description;
+                            this.loading = false;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching weather data:', error);
+                            this.loading = false;
+                        });
+                },
+            },
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
