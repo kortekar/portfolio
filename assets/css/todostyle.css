@@ -1,0 +1,205 @@
+:root{
+    --dark:#374151;
+    --darker:#1F2937;
+    --darkest:#111827;
+    --light:#eee;
+    --pink:#EC4899;
+    --purple:#c904ff;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.279);
+    color: var(--light);
+
+}
+
+#new-task-form{
+    display: flex;
+}
+input,button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+#new-task-input{
+    flex: 1 1 0%;
+    background-color: var(--darker);
+    padding: 1rem;
+    margin-right: 1rem;
+    color: var(--light);
+    border-radius: 10px;
+    font-size: 1.25rem;
+}
+#new-task-input::placeholder{
+    color: gray;
+}
+#new-task-submit{
+    color: var(--light);
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 10px;
+    background-image: linear-gradient(to right,var(--pink),var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+
+}
+
+#new-task-submit:hover{
+    opacity: 0.8;
+    color: aliceblue;
+}
+#new-task-submit:active{
+    opacity: 0.6;
+}
+header{
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.664);
+    margin-top: 10px;
+}
+header h1{
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--darker);
+    margin-bottom: 1rem;
+   
+}
+main{
+    flex: 1 1 0%;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: rgba(176, 174, 174, 0.171);
+    backdrop-filter: blur(25px);
+    margin: 10px auto;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.664);
+    
+}
+
+header{
+    border-radius: 15px;
+
+}
+.task-list{
+    padding: 1rem;
+
+}
+.task-list h2{
+    font-size: 1.5rem;
+    font-weight:300 ;
+    color: rgb(21, 20, 20);
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+#tasks .task{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+
+}
+#tasks .task .content .text{
+    background-image: linear-gradient(to right,var(--light),var(--dark));
+    font-weight: 900;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.125rem;
+    display: block;
+    width: 100%;
+    transition: 0.4s;
+}
+#tasks .task .content .text:not(:read-only){
+  color: var(--pink);  
+}
+#tasks .task .actions{
+    display: flex;
+    margin: 0 -0.5rem;
+}
+#tasks .task .actions button{
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+#tasks .task .actions button:hover{
+    opacity: 0.8;
+}
+#tasks .task .actions button:active{
+    opacity: 0.6;
+}
+.task .actions .edit{
+    color: var(--purple);
+    background-image: linear-gradient(to right,var(--pink),var(--purple));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.task .actions .delete{
+    color: rgb(253, 59, 59);
+
+}
+.hidden{
+    display: none;
+}
+
+
+/*background*/
+
+.wave,
+.wave::before,
+.wave::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250vw;
+  height: 250vw;
+  margin-left: -125vw;
+  transform-origin: 50% 50%;
+  background-color: transparent;
+  border-radius: 38% 42%;
+  box-shadow: inset 0 0 10vw rgba(255, 0, 255, 0.257);
+  animation: spin 16s infinite linear;
+  mix-blend-mode: multiply;
+}
+
+.wave::before {
+  width: 105%;
+  height: 95%;
+  margin-top: -125vw;
+  transform-origin: 49% 51%;
+  border-radius: 40% 38%;
+  box-shadow: inset 0 0 10vw rgba(255, 255, 0, 0.39);
+  animation: spin 13s infinite linear;
+}
+
+.wave::after {
+  width: 102%;
+  height: 98%;
+  margin-top: -125vw;
+  transform-origin: 51% 49%;
+  border-radius: 48% 42%;
+  box-shadow: inset 0 0 10vw rgba(0, 255, 255, 0.429);
+  animation: spin 10s infinite linear;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
