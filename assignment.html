@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        ul {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #33333300;
+}
+
+li {
+  float: left;
+  margin: 2px;
+}
+
+li a {
+  display: block;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    color:white;
+    border-radius: 50px;
+  background-color: #040404c3;
+}
+
+.active {
+  background-color: #E93A7D;
+  border-radius:50px;
+  width: 120px;
+}/*
+button
+*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700&display=swap');
+button {
+  padding: 12.5px 35px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #ff3ba0;
+  color: #ffffff;
+ 
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+button:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+body{
+    height: 100vh;
+   
+}
+
+.te-co{
+    color: grey;
+    font-weight: 500;
+    font-size:18px ;
+}
+
+button:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+.linkk{
+color:#25DAC5;
+font-size: 18px;
+font-weight: 500;
+}
+
+/*/*  main box white  */
+.box{
+    width: 100%;
+    margin-right: 20%;
+    margin: 10px;
+    background-color:whitesmoke;
+    height: 550px;
+    border-radius:10px;
+    
+}
+/*/*  main box white  */
+span h1{
+    font-size: 4.5rem;
+    color: white;
+}
+span p{
+    color:whitesmoke;
+    font-size: 1.8rem;
+    width: 80%;
+}
+.main_name{
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+    font-weight: 700;
+}
+.dash::before{
+    content: " ";
+    width: 40px;
+    height: 10px;
+    background-color:gray;
+}
+
+
+/* input button */
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 4%;
+  width: 80%;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgba(100, 100, 100, 0.812);
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #fffefe;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+:-ms-input-placeholder{
+color:gray;
+}
+/* input button */
+
+/*checkbox design*/
+
+    </style>
+</head>
+<body style="background-color:#2F1893">
+    <div class="main container p-4" >
+        <!--main conainter-->
+        <div class="container">
+            <div class="container mt-3">
+                <ul>
+                    <li><a href="#home" class="main_name">Startup 3</a></li>
+                    <li style="float:right" class="active"><a href="#">Purchase</a></li>
+                    
+                    <li style="float:right"><a href="#contact">Feedback</a></li>
+                    <li style="float:right"><a href="#contact">Blog</a></li>
+                    <li style="float:right"><a href="#contact">Prices</a></li>
+                    <li style="float:right;opacity: 50%;"><a href="#news">Overview</a></li>
+                    
+                    
+                    
+                </ul>
+            </div>
+            <!--nav ends here -->
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12"></div>
+                        <!--left-->
+                        <!--left-->
+                        <div class="col-md-6 ">
+                            <span class="m-1 "><h1>Generate Awesome Web Pages</h1></span>
+                            <span class="m-1 ">
+                                <p> The most important part of startup is samples. The samples form a set of 25 usable pages You can use as is or you can add new blocks</p>
+                            </span>
+                            <span class="m-1">
+                                <button class="mt-2">Learn More</button>
+                            </span>
+                        </div>
+                        <!--right-->
+                        <!--right-->
+                        <div class="col-md-12 col-lg-6">
+                            <div class="container m-lg-auto">
+                                <div class="col-md-12 bg-white box">
+                                    <div class="row bod">
+                                        <div class="col-md-12 text-center mt-3">
+                                            <h1>Sign Up Now</h1>
+                                        </div>
+                                        <div class="col-md-12 mt-3 ">
+                                            <div class="inputGroup">
+                                                <input type="text" required="" autocomplete="off">
+                                                <label for="name">Your Email</label>
+                                            </div>  
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <div class="inputGroup">
+                                                <input type="password" required="" autocomplete="off">
+                                                <label for="name">Your Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-lg-center mt-3">
+                                            <label for="checkbox"> <input type="checkbox" name="" id=""> <span class="te-co">I agree to Terms and condition</span></label>
+                                        </div>
+                                        <div class="col-md-12 text-center mt-3">
+                                            <button class="signin" style="background-color:#482Bef;width: 80%;">Sign in</button>
+                                        </div>
+                                        <div class="col-md-12 text-center  mt-3">
+                                            <span class="dash"><svg xmlns="http://www.w3.org/2000/svg" width="145" height="3" viewBox="0 0 145 3" fill="none">
+                                                <path d="M1.49847 1.5H143.068" stroke="#EBEAED" stroke-width="2" stroke-linecap="round"/>
+                                              </svg></span> or<span><svg xmlns="http://www.w3.org/2000/svg" width="145" height="3" viewBox="0 0 145 3" fill="none">
+                                                <path d="M1.49847 1.5H143.068" stroke="#EBEAED" stroke-width="2" stroke-linecap="round"/>
+                                              </svg></span>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-12 text-center mt-3">
+                                            <button class="signin" style="background-color:#1DA1F2;width: 80%;">Login via Twitter</button>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <span class="te-co">Do you have account? <span class="linkk">Sign-in</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!--main conainter-->
+    </div>
+</body>
+</html>
