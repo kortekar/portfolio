@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan ( Assignment)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        h2{
+            color: red;
+            font-size: 20px;
+
+        }
+        code{
+            color: grey;
+            font-size: 0.5rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+        }
+        .questions{
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="main">
+        <div class="container p-2 mt-2 border border-black border-2 rounded-3">
+            <h3>Java Assignment </h3>
+
+<!-- Questions  -->
+<!-- Questions  -->
+             <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="questions col-lg-12 col-md-12">
+                        <h2>Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it</h2>
+                        <div class="answer">
+                            <pre>
+                                <code>
+        
+        import java.util.Random;
+        
+        public class NewArray {
+            public static void main(String[] args) {
+                int[] array = {1, 2, 3, 4, 5, 6, 7};
+                shuffleArray(array);
+        
+                System.out.println("Shuffled Array:");
+                for (int element : array) {
+                    System.out.print(element + " ");
+                }
+            }
+        
+            public static void shuffleArray(int[] array) {
+                Random rand = new Random();
+                // using swapping of two numbers method can do this problem 
+                for (int i = array.length - 1; i > 0; i--) {
+                    int j = rand.nextInt(i + 1);
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        
+                                </code>
+                            </pre>
+                        </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="questions col-lg-12 col-md-12">
+                        <h2>Check if the input is pangram or not</h2>
+                        <div class="answer">
+                            <pre>
+                                <code>
+                import java.util.Scanner;
+                public class Pangram {
+                public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+                                    
+                                    
+                System.out.println("Pangram Checker");
+                System.out.print("Enter a sentence: ");
+                String input = scanner.nextLine();
+                scanner.close();
+                                    
+                                    
+                boolean isPangram = checkPangram(input);
+                if (isPangram) {
+                    System.out.println("It's a pangram!");
+                } else {
+                    System.out.println("It's not a pangram.");
+                    }
+                }
+                public static boolean checkPangram(String input) {
+                input = input.toLowerCase();
+                String alphabet = "abcdefghijklmnopqrstuvwxyz";
+                int alphabetLength = alphabet.length();
+                                    
+                for (int i = 0; i < alphabetLength; i++) {
+                char letter = alphabet.charAt(i);
+                if (!input.contains(String.valueOf(letter))) {
+                    return false; 
+                }
+                }
+                return true; 
+                                        
+                    }
+                }
+                /* 
+                THis program takes input and checks for every letter of 
+                english aplhabet if it is present in the input then 
+                it is pangram or else false
+                  */
+                                    
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="questions col-lg-12 col-md-12">
+                        <h2>Enter a Roman Number as input and convert it to an integer. (ex IX = 9) </h2>
+                    
+                     <div class="answer">
+                        <pre>
+                            <code>
+                import java.util.Scanner;
+                
+                public class IntegerV {
+                public static int rToI(String s) {
+                int result = 0;
+                int PV = 0;
+                
+                for (int i = s.length() - 1; i >= 0; i--) {
+                    char currentChar = s.charAt(i);
+                    int CV = 0;
+                
+                    if (currentChar == 'I') {
+                        CV = 1;
+                    } else if (currentChar == 'V') {
+                        CV = 5;
+                    } else if (currentChar == 'X') {
+                        CV = 10;
+                    } else if (currentChar == 'L') {
+                        CV = 50;
+                    } else if (currentChar == 'C') {
+                        CV = 100;
+                    } else if (currentChar == 'D') {
+                        CV = 500;
+                    } else if (currentChar == 'M') {
+                        CV = 1000;
+                    }
+                
+                    if (CV < PV) {
+                        result -= CV;
+                    } else {
+                        result += CV;
+                    }
+                
+                    PV = CV;
+                }
+                
+                return result;
+                }
+                
+                public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter a Roman number: ");
+                String romanNumber = scanner.nextLine();
+                
+                int integer = rToI(romanNumber);
+                System.out.println(romanNumber + " = " + integer);
+                
+                scanner.close();
+                }
+                }
+                
+                            </code>
+                        </pre>
+                     </div>
+                    </div> 
+                </div>
+                
+             </div>
+<!-- Questions  -->
+<!-- Questions  -->
+
+
+  
+
+    <!-- Questions  -->
+    <!-- Questions  -->
+   
+    <div class="btn btn-close-white spl">
+        <button class="btn btn-dark mt-2 p-2" ><a href="Cloudassignment.html" style="text-decoration: none;color: aliceblue;" target="_parent">Main Page/Js Assignment 1</a></button>
+        <button class="btn btn-dark mt-2 p-2"><a href="sorting.html" style="text-decoration: none;color: aliceblue;" target="_parent">JS assignment-2</a></button>
+        <button class="btn btn-dark mt-2 p-2"><a href="calculator1.html" style="text-decoration: none;color: aliceblue;" target="_parent">Calculator</a></button>
+    <button class="btn btn-dark mt-2 p-2" ><a href="registraion.html" style="text-decoration: none;color: aliceblue;" target="_parent">Registration Form</a></button>
+    
+    </div>
+    
+
+</div>
+
+</div>
+</body>
+</html>

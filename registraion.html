@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan ( Assignment)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .main{
+            background: rgba(255, 255, 255, 0);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6.9px);
+            -webkit-backdrop-filter: blur(6.9px);
+            border: 1px solid rgb(255, 255, 255);
+        }
+        .main{
+            background-color: dodgerblue;
+            box-shadow: -4px 7px 11px 2px #000000;
+            animation: myAnim 1s ease 0s 1 normal forwards;
+        }
+        body{
+            background-color: rgba(185, 185, 185, 0.589);
+        }
+        @keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+    </style>
+</head>
+<body class="main-1">
+    <div class="container mt-5 main p-2 mb-2">
+        <h3>Assignment 3</h3>
+        <h1>Survey Form</h1>
+        <div class="container p-5 bg-light-subtle border rounded-3 col-lg-12 col-md-12 mb-3">
+            <form id="surveyForm">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                    <div class="invalid-feedback">
+                        Please enter your first name.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                    <div class="invalid-feedback">
+                        Please enter your last name.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required>
+                    <div class="invalid-feedback">
+                        Please enter your date of birth.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country:</label>
+                    <select class="form-select" id="country" name="country" required>
+                        <option value="India">India</option>
+                        <option value="usa">USA</option>
+                        <option value="canada">Canada</option>
+                        <option value="uk">UK</option>
+                        <option value="australia">Australia</option>
+                        <option value="China">China</option>
+                        <option value="Nepal">Nepal</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select your country.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label class="form-check-label">Gender:</label><br>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="male" name="gender" value="male">
+                        <label for="male" class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="female" name="gender" value="female">
+                        <label for="female" class="form-check-label">Female</label>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please select your gender.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="profession" class="form-label">Profession:</label>
+                    <input type="text" class="form-control" id="profession" name="profession" required>
+                    <div class="invalid-feedback">
+                        Please enter your profession.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number:</label>
+                    <input type="tel" class="form-control" id="mobile" name="mobile" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid mobile number.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter your address.
+                    </div>
+                </div>
+    
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+                <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
+            </form>
+
+            
+        </div>
+        <div class="btn btn-close-white spl">
+            <button class="btn btn-dark mt-2 p-2" ><a href="Cloudassignment.html" style="text-decoration: none;color: aliceblue;" target="_parent">Main Page</a></button>
+            <button class="btn btn-dark mt-2 p-2" ><a href="Java.html" style="text-decoration: none;color: aliceblue;" target="_parent">Java Assignment</a></button>
+            <button class="btn btn-dark mt-2 p-2"><a href="calculator1.html" style="text-decoration: none;color: aliceblue;" target="_parent">Calculator</a></button>
+                <button class="btn btn-dark mt-2 p-2"><a href="sorting.html" style="text-decoration: none;color: aliceblue;" target="_parent">JS assignment-2</a></button>
+        </div>
+    </div>
+
+    <div id="popup" class="container mt-4" style="display: none;">
+        <h2>Survey Form Submission</h2>
+        <div id="results"></div>
+        <button class="btn btn-secondary" onclick="closePopup()">Close</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById("surveyForm");
+            if (form.checkValidity()) {
+                const firstName = document.getElementById("firstName").value;
+                const lastName = document.getElementById("lastName").value;
+                const dob = document.getElementById("dob").value;
+                const country = document.getElementById("country").value;
+                const genderElements = document.querySelectorAll('input[name="gender"]:checked');
+                const gender = Array.from(genderElements).map(el => el.value);
+                const profession = document.getElementById("profession").value;
+                const email = document.getElementById("email").value;
+                const mobile = document.getElementById("mobile").value;
+                const address = document.getElementById("address").value;
+
+                const results = `
+                    <p><strong>First Name:</strong> ${firstName}</p>
+                    <p><strong>Last Name:</strong> ${lastName}</p>
+                    <p><strong>Date of Birth:</strong> ${dob}</p>
+                    <p><strong>Country:</strong> ${country}</p>
+                    <p><strong>Gender:</strong> ${gender.join(', ')}</p>
+                    <p><strong>Profession:</strong> ${profession}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Mobile Number:</strong> ${mobile}</p>
+                    <p><strong>Address:</strong> ${address}</p>
+                `;
+
+                document.getElementById("results").innerHTML = results;
+                document.getElementById("popup").style.display = "block";
+            } else {
+                form.classList.add("was-validated");
+            }
+        }
+
+        function resetForm() {
+            const form = document.getElementById("surveyForm");
+            form.reset();
+            form.classList.remove("was-validated");
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            resetForm();
+        }
+    </script>
+</body>
+</html>
