@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Your Website</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .plan-container {
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .highlight {
+      border: 2px solid #56a8ff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mt-3">
+      <div class="card bg-light">
+        <div class="card-header">Plan 1</div>
+        <div class="card-body">
+          <button class="btn btn-primary btn-order" data-toggle="modal" data-target="#orderModal" onclick="setSlider(10)">Pricing</button>
+          <h5 class="mt-2">Total no of user : 10</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-3">
+      <div class="card bg-light">
+        <div class="card-header">Plan 2</div>
+        <div class="card-body">
+          <button class="btn btn-primary btn-order" data-toggle="modal" data-target="#orderModal" onclick="setSlider(20)">Pricing</button>
+          <h5 class="mt-2">Total no of user : 20</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-3">
+      <div class="card bg-light">
+        <div class="card-header">Plan 3</div>
+        <div class="card-body">
+          <button class="btn btn-primary btn-order" data-toggle="modal" data-target="#orderModal" onclick="setSlider(30)">Pricing</button>
+          <h5 class="mt-2">Total no of user : 30</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">Place Your Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="userSlider">Number of Users: <span id="userCount">1</span></label>
+        <input type="range" class="form-control-range" id="userSlider" min="1" max="30" step="1">
+        
+        <div class="container mt-3">
+          <div class="row">
+            <div class="col-md-4 plan-container" data-range="1-10" onclick="setSlider(10)">
+              <div class="card">
+                <div class="card-header">Plan 1</div>
+                <div class="card-body">
+                    <div class="text-black">
+                        <h5>Rs 400</h5>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 plan-container" data-range="11-20" onclick="setSlider(20)">
+              <div class="card">
+                <div class="card-header">Plan 2</div>
+                <div class="card-body">
+                    <div class="text-black">
+                        <h5>Rs 600</h5>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 plan-container" data-range="21-30" onclick="setSlider(30)">
+              <div class="card">
+                <div class="card-header">Plan 3</div>
+                <div class="card-body">
+                    <div class="text-black">
+                        <h5>Rs 800</h5>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form id="orderForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="orderComments">Order Comments</label>
+            <textarea class="form-control" id="orderComments" name="orderComments" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+  var userSlider = document.getElementById('userSlider');
+  var userCount = document.getElementById('userCount');
+  var planContainers = document.querySelectorAll('.plan-container');
+  var orderButtons = document.querySelectorAll('.btn-order');
+
+  userSlider.addEventListener('input', function() {
+    var sliderValue = parseInt(userSlider.value);
+    userCount.innerText = sliderValue;
+    highlightPlanContainer(sliderValue);
+  });
+
+  orderButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var sliderValue = parseInt(userSlider.value);
+      userCount.innerText = sliderValue;
+      highlightPlanContainer(sliderValue);
+      $('#orderModal').modal('show');
+    });
+  });
+
+  function highlightPlanContainer(value) {
+    planContainers.forEach(function(container) {
+      var range = container.dataset.range.split('-').map(Number);
+      if (value >= range[0] && value <= range[1]) {
+        container.classList.add('highlight');
+      } else {
+        container.classList.remove('highlight');
+      }
+    });
+  }
+
+  function setSlider(value) {
+    userSlider.value = value;
+    userCount.innerText = value;
+    highlightPlanContainer(value);
+  }
+</script>
+
+</body>
+</html>
