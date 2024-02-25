@@ -4,43 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shake to Blow Candle</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Inline">
+     <link rel="stylesheet" href="stylescc.css">
 </head>
 <body>
-    <div id="cake-container">
-        <div id="cake">
-            <img src="cake.gif" alt="Cake Image" id="cake-image">
-            <img src="candle.png" alt="Candle Image" id="candle-image">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <a href="#" id="demo" class="d-flex justify-content-center align-items-center">
+                    <span class="color1">H</span>
+                    <span class="color2">A</span>
+                    <span class="color3">P</span>
+                    <span class="color4">P</span>
+                    <span class="color5">Y</span>
+                    <span class="color1">&nbsp;</span>
+                    <span class="color2">B</span>
+                    <span class="color3">I</span>
+                    <span class="color4">R</span>
+                    <span class="color5">T</span>
+                    <span class="color1">H</span>
+                    <span class="color2">D</span>
+                    <span class="color3">A</span>
+                    <span class="color4">Y</span>
+                    <span class="color5">!</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div id="cake-container">
+                    <div class="cake">
+                        <div class="candles">
+                            <div class="candle has-shadow back">
+                                <div class="candle--light"></div>
+                                <div class="candle--wick"></div>
+                                <div class="candle--wax"></div>
+                            </div>
+                            <div class="candle has-shadow">
+                                <div class="candle--light"></div>
+                                <div class="candle--wick"></div>
+                                <div class="candle--wax"></div>
+                            </div>
+                            <div class="candle has-shadow front">
+                                <div class="candle--light"></div>
+                                <div class="candle--wick"></div>
+                                <div class="candle--wax"></div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="cream-wrap">
+                                <div class="cream"></div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                            </div>
+                            <div class="cream-wrap --copy">
+                                <div class="cream"></div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                                <div class="cream-line"></div>
+                                <div class="cream-line-top">
+                                    <div class="mask"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tray"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <audio id="birthday-song" src="music.mp3"></audio>
-    <script >
 
-        let cake = document.getElementById('cake');
-let candle = document.getElementById('candle-image');
-let audio = document.getElementById('birthday-song');
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        var letters = document.getElementById('demo').querySelectorAll('span');
 
-// Function to handle the shake event
-function handleShake(event) {
-    let acceleration = event.accelerationIncludingGravity;
-    let shakeThreshold = 50;
+        // Animate Happy Birthday text
+        letters.forEach(function (letter, index) {
+            var delay = index * 0.1 + 0.5;
+            letter.style.animation = 'rotate-cake2 8s linear infinite';
+            letter.style.animationDelay = '-' + delay + 's';
+        });
 
-    if (
-        Math.abs(acceleration.x) > shakeThreshold ||
-        Math.abs(acceleration.y) > shakeThreshold ||
-        Math.abs(acceleration.z) > shakeThreshold
-    ) {
-        // Candle blown
-        candle.style.display = 'none';
-        audio.play();
-        cake.id = 'blow-animation';
-    }
-}
+        // Detect shake event
+        window.addEventListener('devicemotion', handleShake);
 
-// Add event listener for device motion
-window.addEventListener('devicemotion', handleShake);
+        // Detect voice commands
+        window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
 
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript.toLowerCase();
+            if (transcript.includes('off') || transcript.includes('ufff')) {
+                blowCandle();
+            }
+        };
 
+        function handleShake(event) {
+            let acceleration = event.accelerationIncludingGravity;
+            let shakeThreshold = 50;
+
+            if (
+                Math.abs(acceleration.x) > shakeThreshold ||
+                Math.abs(acceleration.y) > shakeThreshold ||
+                Math.abs(acceleration.z) > shakeThreshold
+            ) {
+                blowCandle();
+            }
+        }
+
+        function blowCandle() {
+            let candle = document.querySelector('.candle--light');
+            let audio = document.getElementById('birthday-song');
+
+            // Candle blown
+            candle.style.backgroundImage = 'linear-gradient(-45deg, yellow, black)';
+            audio.play();
+
+            // Additional animations or actions after blowing the candle can be added here.
+        }
     </script>
 </body>
 </html>

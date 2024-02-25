@@ -1,40 +1,267 @@
 body {
-    margin: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background: #e3ecf8;
     height: 100vh;
-    background-color: #fce5cd;
-}
+    overflow: hidden;
+    font-family: 'Bungee Inline', sans-serif
+  }
+  @import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+  .cake {
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+  }
 
-#cake-container {
+  .body {
+    height: 120px;
+    border-radius: 20px 20px 0 0;
+    background: #ff0059;
     position: relative;
-}
+    overflow: hidden;
+    white-space: nowrap;
+    /* for safari border-radius overflow and transform fix */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
 
-#cake {
+  .tray {
+    width: 100%;
+    height: 3px;
+    background: #cac9c9;
+    box-shadow: 0px 5px 0px 2px #9E9E9E;
+  }
+
+  .cream {
+    height: 32px;
+    background: #fff;
+    width: 100%;
+  }
+
+  .cream-wrap {
+    display: inline-block;
+    width: 100%;
+    
+  }
+
+  .--copy {
+    animation: rotate-cake2 8s linear infinite;
+    animation-delay: -4s;
+
+    left: -35px;
     position: relative;
-}
+  }
 
-#cake-image,
-#candle-image {
-    max-width: 100%;
-    display: block;
-}
-
-#candle-image {
+  .cream-line {
+    width: 30px;
+    height: 60px;
+    background: #fff;
+    border-radius: 0 0 20px 20px;
+    box-shadow: inset 0px -7px 0px 0px #e5e5e6;
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
+    top: 29px;
+    left: 0;
+  }
+
+  .cream-line:nth-child(2) {
+    left: 60px;
+    height: 65px;
+  }
+
+  .cream-wrap:not(.--copy) .cream-line:nth-child(2) {
+    left: 60px;
+    height: 65px;
+    
+  }
+
+  .cream-line:nth-child(6) {
+    left: 120px;
+    height: 67px;
+  }
+
+  .cream-line:nth-child(8) {
+    left: 180px;
+    height: 80px;
+  }
+
+  .cream-line:nth-child(10) {
+    left: 240px;
+    height: 60px;
+  }
+
+  .cream-line-top {
+    left: 30px;
+    height: 30px;
+    top: 32px;
+    position: absolute;
+    width: 30px;
+    background: white;
+  }
+
+  .cream-line-top:nth-child(5) {
+    left: 90px;
+    top: 15px;
+  }
+
+  .cream-line-top:nth-child(7) {
+    left: 150px;
+    top: 22px;
+  }
+
+  .cream-line-top:nth-child(9) {
+    left: 210px;
+    top: 22px;
+  }
+
+  /* the joining one */
+  .cream-line-top:nth-child(11) {
+    left: 270px;
+    top: 0px;
+    width: 32px;
+  }
+
+  .cream-line-top:nth-child(11)>.mask {
+    width: 98%;
+  }
+
+  .cream-line-top .mask {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    background: #ff0054;
+    top: 20px;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0px -7px 0px 0px #e5e5e6;
+  }
+
+  .candles {
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    animation: turn infinite linear 5s;
+    animation-play-state: running;
+  }
+
+  .candle {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+    animation: turn1 infinite linear 5s;
+    animation-play-state: running;
+    overflow: hidden;
+  }
+
+  .candle::before {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+    width: 100%;
+    bottom: 0;
+    height: 15px;
+    left: 0;
+    z-index: 1;
+  }
+
+  .candle--wax {
+    display: flex;
+    height: 80%;
+    flex: 1;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    background: repeating-linear-gradient(-50deg, #6ae59f, #6ae59f 20px, #68c7fb 20px, #68c7fb 40px);
+    background-position: 0 0;
+    ;
+  }
+
+  .candle--wick {
+    display: flex;
+    height: 4px;
+    width: 2px;
+    background: #afdbf8;
+  }
+
+  .candle--light {
+    display: flex;
+    width: 40%;
+    height: 20px;
+    border-radius: 0 60% 30% 60%;
+    transform: translate(21%, 6%) rotate(45deg);
+    background-image: linear-gradient(-45deg, #fdf967, rgba(253, 249, 103, 0.69));
+    
+  }
+
+  .has-shadow .candle--wax::before {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    animation: shadow infinite linear 2.5s;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .has-shadow.back .candle--wax::before {
+    animation: shadow-back infinite linear 5s;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .has-shadow.front .candle--wax::before {
+    animation: shadow-back infinite linear 5s;
+    background: rgba(0, 0, 0, 0.3);
+    animation-delay: -2.5s;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .has-shadow .candle--wax {
+    overflow: hidden;
+    overflow: hidden;
+    position: relative;
+  }
+
+
+
+a {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  text-decoration: none;
+  color: #000;
 }
 
-#blow-animation {
-    animation: blow 0.5s ease-out forwards;
+
+#demo{
+display :flex;
+justify-content:  center;
+align-items:  center;
+position: absolute;
+top: 0;
+left: 0;
+height: 100px;
+width:100%
 }
 
-@keyframes blow {
-    to {
-        height: 0;
-    }
-}
+span{
+font-size:8vw;
+font-weight:200}
+
+.color1{color:tomato}
+.color2{color: #aa0555}
+.color3{color: deeppink}
+.color4{color: #0099aa }
+.color5{color: #00aa88}
+ 
