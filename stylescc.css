@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fce5cd;
+}
+
+#cake-container {
+    position: relative;
+}
+
+#cake {
+    width: 200px;
+    height: 250px;
+    background-color: #ffd700; /* Cake color */
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+#candle {
+    width: 20px;
+    height: 150px;
+    background-color: #d9534f; /* Candle color */
+    margin: 20px auto 0;
+    border-radius: 10px 10px 0 0;
+}
+
+#blow-animation {
+    animation: blow 0.5s ease-out forwards;
+}
+
+@keyframes blow {
+    to {
+        height: 0;
+    }
+}

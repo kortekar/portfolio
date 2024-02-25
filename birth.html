@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shake to Blow Candle</title>
+    <link rel="stylesheet" href="stylescc.css">
+</head>
+<body>
+    <div id="cake-container">
+        <div id="cake">
+            <div id="candle"></div>
+        </div>
+    </div>
+    <script >
+        let cake = document.getElementById('cake');
+let candle = document.getElementById('candle');
+
+// Function to handle the shake event
+function handleShake(event) {
+    let acceleration = event.accelerationIncludingGravity;
+    let shakeThreshold = 15;
+
+    if (
+        Math.abs(acceleration.x) > shakeThreshold ||
+        Math.abs(acceleration.y) > shakeThreshold ||
+        Math.abs(acceleration.z) > shakeThreshold
+    ) {
+        // Candle blown
+        candle.id = 'candle blow-animation';
+        cake.id = 'blow-animation';
+    }
+}
+
+// Add event listener for device motion
+window.addEventListener('devicemotion', handleShake);
+
+    </script>
+</body>
+</html>
