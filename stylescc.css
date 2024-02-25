@@ -12,19 +12,21 @@ body {
 }
 
 #cake {
-    width: 200px;
-    height: 250px;
-    background-color: #ffd700; /* Cake color */
-    border-radius: 15px 15px 0 0;
     position: relative;
 }
 
-#candle {
-    width: 20px;
-    height: 150px;
-    background-color: #d9534f; /* Candle color */
-    margin: 20px auto 0;
-    border-radius: 10px 10px 0 0;
+#cake-image,
+#candle-image {
+    max-width: 100%;
+    display: block;
+}
+
+#candle-image {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
 }
 
 #blow-animation {

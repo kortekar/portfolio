@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shake to Blow Candle</title>
-    <link rel="stylesheet" href="stylescc.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="cake-container">
         <div id="cake">
-            <div id="candle"></div>
+            <img src="cake.gif" alt="Cake Image" id="cake-image">
+            <img src="candle.png" alt="Candle Image" id="candle-image">
         </div>
     </div>
+    <audio id="birthday-song" src="music.mp3"></audio>
     <script >
+
         let cake = document.getElementById('cake');
-let candle = document.getElementById('candle');
+let candle = document.getElementById('candle-image');
+let audio = document.getElementById('birthday-song');
 
 // Function to handle the shake event
 function handleShake(event) {
     let acceleration = event.accelerationIncludingGravity;
-    let shakeThreshold = 15;
+    let shakeThreshold = 50;
 
     if (
         Math.abs(acceleration.x) > shakeThreshold ||
@@ -27,13 +31,15 @@ function handleShake(event) {
         Math.abs(acceleration.z) > shakeThreshold
     ) {
         // Candle blown
-        candle.id = 'candle blow-animation';
+        candle.style.display = 'none';
+        audio.play();
         cake.id = 'blow-animation';
     }
 }
 
 // Add event listener for device motion
 window.addEventListener('devicemotion', handleShake);
+
 
     </script>
 </body>
