@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYFRR - Computer Maintenance Services</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm" data-aos="fade-down">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" style="line-height: 1.2;">
+                <img src="Cyfrr-Photoroom.png" alt="CYFRR Logo" class="company-logo">
+                <div>
+                    <strong class="fs-5 text-white">CYFRR</strong>
+                    <small class="d-block text-white-50">Computer Maintenance Services</small>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="cyfrr.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" href="computer.html">Computer Maintenance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="data.html">Data Recovery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="consulting.html">IT Consulting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        
+            <span class="ms-3 text-white theme-toggle" id="themeToggle">🌙 Dark</span>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <h1>Welcome to CYFRR Services</h1>
+        <p>Your trusted partner for computer maintenance, data recovery, and IT consulting.</p>
+        <p>Resize your browser to see the responsive navbar in action.</p>
+        <div style="height: 1000px; background-color: #f8f9fa; padding: 20px;">
+            <p>Scroll down to see AOS effect if you add data-aos attributes to elements.</p>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000, // values from 0 to 3000, with step 50ms
+            once: true,     // whether animation should happen only once - while scrolling down
+        });
+
+        // Basic theme toggle (example, you'll need more logic for actual theme switching)
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            // This is just a placeholder, implement your actual theme switching logic here
+            alert('Theme toggle clicked! Implement your dark/light mode logic.');
+            // Example: document.body.classList.toggle('dark-mode');
+        });
+    </script>
+
+</body>
+</html>

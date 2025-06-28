@@ -166,103 +166,46 @@
         color: var(--bs-emphasis-color);
     }
 
-    
-    .navbar {
-  height: 80px;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  display: flex;
-  align-items: center;
+
+    .navbar-brand div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    height: 100%;
 }
 
-.navbar > .container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
 
-.navbar-brand {
-  height: 100%;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-brand .company-logo {
-  width: 150px;
-  height: 160%;
-  object-fit: contain;
-  margin-right: 10px;
-}
-
-.navbar-brand div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.navbar-toggler {
-  padding: 0.25rem 0.75rem;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav .nav-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav .nav-link {
-  color: var(--bs-navbar-color) !important;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  border-radius: 0.375rem;
-  padding: 0.5rem 1rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
 
 .navbar-nav .nav-item:not(:last-child) {
-  margin-right: 0.75rem;
+    margin-right: 0.75rem;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  color: var(--bs-light) !important;
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+    color: var(--bs-light) !important;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .navbar-nav .nav-link.active {
-  background-color: rgb(var(--bs-primary-rgb)) !important;
-  color: white !important;
-  font-weight: 600;
-  pointer-events: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  border-color: rgb(var(--bs-primary-rgb)) !important;
+    background-color: rgb(var(--bs-primary-rgb)) !important;
+    color: white !important;
+    font-weight: 600;
+    pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border-color: rgb(var(--bs-primary-rgb)) !important;
 }
 
 .navbar-nav + .theme-toggle {
-  margin-left: 1.5rem !important;
-  height: 100%;
-  display: flex;
-  align-items: center;
+    margin-left: 1.5rem !important;
+    height: 100%; 
+    display: flex;
+    align-items: center;
 }
+    
+    
 
     
   </style>
@@ -272,7 +215,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm" data-aos="fade-down">
         <div class="container">
           <a class="navbar-brand d-flex align-items-center" href="#" style="line-height: 1.2;">
-            <img src="Cyfrr-Photoroom.png" alt="CYFRR Logo" class="company-logo" style="width: 150px;"> <div>
+            <img src="Cyfrr-Photoroom.png" alt="CYFRR Logo" class="company-logo" style="width: 10px;"> <div>
               <strong class="fs-5 text-white">CYFRR</strong>
               <small class="d-block text-white-50">Software Consulting Services</small> </div>
           </a>
