@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diagnosis & Data Recovery Charges</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+    }
+
+    .section-title {
+      border-left: 5px solid #0d6efd;
+      padding-left: 15px;
+      margin-top: 40px;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .card-custom {
+      background: var(--bs-light-bg-subtle); 
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+    }
+
+    .price-card {
+        background: var(--bs-body-tertiary);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .price-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    .price-card .icon {
+        font-size: 2.5rem; 
+        margin-bottom: 10px;
+        color: var(--bs-primary);
+        line-height: 1;
+    }
+    .price-card h5 {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--bs-emphasis-color);
+    }
+    .price-card .price {
+        font-size: 1.5rem; 
+        font-weight: 700;
+        color: var(--bs-success); 
+        margin-top: 10px;
+    }
+    .price-card small {
+        color: var(--bs-secondary-color);
+        font-size: 0.85rem;
+    }
+    .price-card.custom-text-price .price {
+        font-size: 1.2rem; 
+        color: var(--bs-info); 
+    }
+
+    .table-container {
+      background: var(--bs-body-tertiary);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .table {
+      margin-bottom: 0;
+    }
+    .table thead {
+      background-color: var(--bs-primary);
+      color: white;
+      border-bottom: none;
+    }
+    .table thead th {
+        border-bottom: none;
+        padding: 1rem 1rem;
+        font-weight: 600;
+    }
+    .table tbody tr:nth-of-type(odd) {
+      background-color: var(--bs-tertiary-bg);
+    }
+    .table tbody tr:hover {
+      background-color: var(--bs-light-bg-subtle);
+    }
+    .table td, .table th {
+        border-color: var(--bs-border-color-translucent);
+        padding: 0.75rem 1rem;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      color: white;
+      border: 1px solid white;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease-in-out;
+    }
+    .theme-toggle:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: scale(1.05);
+    }
+
+    .view-toggle-buttons .btn {
+        margin: 5px;
+        padding: .5rem 1.25rem;
+        border-radius: .5rem;
+    }
+    .view-toggle-buttons .btn.active {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: white;
+    }
+    .view-toggle-buttons .btn:not(.active) {
+        background-color: var(--bs-light-bg-subtle);
+        border-color: var(--bs-border-color);
+        color: var(--bs-body-color);
+    }
+    .table-view { display: none; }
+    .card-view { display: none; }
+
+    .terms-conditions-list {
+        list-style: none; 
+        padding-left: 0;
+    }
+    .terms-conditions-list li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px; 
+        color: var(--bs-secondary-color);
+    }
+    .terms-conditions-list li::before {
+        content: "\2713"; 
+        font-family: "bootstrap-icons"; 
+        color: var(--bs-success);
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: bold;
+    }
+    .terms-conditions-list li:last-child {
+        margin-bottom: 0;
+        color: var(--bs-danger); 
+        font-weight: 500;
+    }
+    .terms-conditions-list li:last-child::before {
+        content: "\26A0"; 
+        color: var(--bs-warning);
+    }
+
+    .navbar {
+  height: 80px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar > .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  height: 100%;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand .company-logo {
+  width: 150px;
+  height: 160%;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.navbar-brand div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  color: var(--bs-navbar-color) !important;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin-right: 0.75rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--bs-light) !important;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-nav .nav-link.active {
+  background-color: rgb(var(--bs-primary-rgb)) !important;
+  color: white !important;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  border-color: rgb(var(--bs-primary-rgb)) !important;
+}
+
+.navbar-nav + .theme-toggle {
+  margin-left: 1.5rem !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm" data-aos="fade-down">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="Cyfrr-Photoroom.png" alt="CYFRR Logo" class="company-logo" style="width: 150px;">
+        <div>
+          <strong class="fs-5 text-white">CYFRR</strong> <small class="d-block text-white-50">Data Recovery Services</small> </div>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" href="cyfrr.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="computer.html">Computer Maintenance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white active" href="data.html">Data Recovery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="consulting.html">IT Consulting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+  
+      <span class="ms-3 text-white theme-toggle" id="themeToggle" style="cursor: pointer;">🌙 Dark</span>
+    </div>
+  </nav>
+
+
+
+  <section class="py-5 text-center position-relative overflow-hidden bg-body-tertiary border-bottom" data-aos="fade-up">
+    <div class="container position-relative z-2">
+      <h1 class="display-4 fw-bold text-body-emphasis mb-3">
+        Diagnosis & Data Recovery Charges
+      </h1>
+      <p class="lead text-secondary mb-4">
+        Transparent pricing for expert data recovery services. Choose your preferred view.
+      </p>
+      <a href="#contact" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+        Get a Quote
+      </a>
+    </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background-color: var(--bs-primary-bg-subtle);"></div>
+  </section>
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">🔧 Diagnosis Charges (Non-Refundable)</h2>
+    <div class="text-center mb-4 view-toggle-buttons" data-aos="fade-up" data-aos-delay="50">
+        <button class="btn btn-sm" data-view-target="diagnosis" data-view-type="card">Card View</button>
+        <button class="btn btn-sm" data-view-target="diagnosis" data-view-type="table">Table View</button>
+    </div>
+
+    <div id="diagnosis-card-view" class="card-view">
+        <div class="row g-4 justify-content-center">
+        
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-sd-card"></i></div>
+            <h5>SDXC/Micro / CFast</h5>
+            <small>64GB - 128GB</small>
+            <span class="price">₹1,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-sd-card-fill"></i></div>
+            <h5>SDXC/Micro / CFast</h5>
+            <small>256GB - 1TB</small>
+            <span class="price">₹2,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd"></i></div>
+            <h5>Hard Disk (HDD)</h5>
+            <small>Below 1TB</small>
+            <span class="price">₹2,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd-fill"></i></div>
+            <h5>Hard Disk (HDD)</h5>
+            <small>1TB / 2TB</small>
+            <span class="price">₹3,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-disc"></i></div>
+            <h5>Solid State Drive (SSD)</h5>
+            <small>256GB / 512GB</small>
+            <span class="price">₹2,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-disc-fill"></i></div>
+            <h5>Solid State Drive (SSD)</h5>
+            <small>1TB / 2TB</small>
+            <span class="price">₹4,000</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div id="diagnosis-table-view" class="table-view">
+      <div class="table-container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr><th>Device Type</th><th>Capacity Range</th><th>Diagnosis Fee (₹)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>SDXC/SDXC Micro / CFast</td><td>64GB - 128GB</td><td>₹1,000</td></tr>
+              <tr><td>SDXC/SDXC Micro / CFast</td><td>256GB - 1TB</td><td>₹2,000</td></tr>
+              <tr><td>Hard Disk (HDD)</td><td>Below 1TB</td><td>₹2,000</td></tr>
+              <tr><td>Hard Disk (HDD)</td><td>1TB / 2TB</td><td>₹3,000</td></tr>
+              <tr><td>Solid State Drive (SSD)</td><td>256GB / 512GB</td><td>₹2,000</td></tr>
+              <tr><td>Solid State Drive (SSD)</td><td>1TB / 2TB</td><td>₹4,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">💾 Data Recovery Charges</h2>
+    <div class="text-center mb-4 view-toggle-buttons" data-aos="fade-up" data-aos-delay="50">
+        <button class="btn btn-sm" data-view-target="recovery" data-view-type="card">Card View</button>
+        <button class="btn btn-sm" data-view-target="recovery" data-view-type="table">Table View</button>
+    </div>
+
+    <div id="recovery-card-view" class="card-view">
+        <div class="row g-4 justify-content-center">
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-memory"></i></div>
+            <h5>Memory Card</h5>
+            <small>Up to 128GB (Any data amount)</small>
+            <span class="price">₹4,000 - ₹6,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd"></i></div>
+            <h5>HDD (Below 1TB)</h5>
+            <small>Up to 100GB / Above</small>
+            <span class="price">₹6,000 - ₹8,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd-fill"></i></div>
+            <h5>HDD (Up to 1TB)</h5>
+            <small>Up to 100GB</small>
+            <span class="price">₹6,000 - ₹8,000</span>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd-fill"></i></div>
+            <h5>HDD (Up to 1TB)</h5>
+            <small>100GB+</small>
+            <span class="price">₹8,000 - ₹10,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd-stack"></i></div>
+            <h5>HDD (1TB – 2TB)</h5>
+            <small>Up to 100GB</small>
+            <span class="price">₹6,000 - ₹8,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-hdd-stack-fill"></i></div>
+            <h5>HDD (1TB – 2TB)</h5>
+            <small>100GB+</small>
+            <span class="price">₹8,000 - ₹10,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-lightning-charge"></i></div>
+            <h5>SSD / NVMe (Up to 1TB)</h5>
+            <small>Up to 100GB</small>
+            <span class="price">₹7,000 - ₹9,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="800">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h5>SSD / NVMe (Up to 1TB)</h5>
+            <small>100GB+</small>
+            <span class="price">₹9,000 - ₹10,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="900">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-lightning"></i></div>
+            <h5>SSD / NVMe (1TB – 2TB)</h5>
+            <small>Up to 100GB</small>
+            <span class="price">₹7,000 - ₹9,000</span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="1000">
+            <div class="price-card">
+            <div class="icon"><i class="bi bi-lightning-fill"></i></div>
+            <h5>SSD / NVMe (1TB – 2TB)</h5>
+            <small>100GB+</small>
+            <span class="price">₹9,000 - ₹11,000</small>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div id="recovery-table-view" class="table-view">
+      <div class="table-container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr><th>Device Type</th><th>Recovered Data Size</th><th>Price (₹)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Memory Card (up to 128GB)</td><td>Any amount of data</td><td>₹4,000 - ₹6,000</td></tr>
+              <tr><td>HDD (Below 1TB)</td><td>Up to 100GB / Above</td><td>₹6,000 - ₹8,000</td></tr>
+              <tr><td>HDD (Up to 1TB)</td><td>Up to 100GB</td><td>₹6,000 - ₹8,000</td></tr>
+              <tr><td>HDD (Up to 1TB)</td><td>100GB+</td><td>₹8,000 - ₹10,000</td></tr>
+              <tr><td>HDD (1TB – 2TB)</td><td>Up to 100GB</td><td>₹6,000 - ₹8,000</td></tr>
+              <tr><td>HDD (1TB – 2TB)</td><td>100GB+</td><td>₹8,000 - ₹10,000</td></tr>
+              <tr><td>SSD / NVMe (Up to 1TB)</td><td>Up to 100GB</td><td>₹7,000 - ₹9,000</td></tr>
+              <tr><td>SSD / NVMe (Up to 1TB)</td><td>100GB+</td><td>₹9,000 - ₹10,000</td></tr>
+              <tr><td>SSD / NVMe (1TB – 2TB)</td><td>Up to 100GB</td><td>₹7,000 - ₹9,000</td></tr>
+              <tr><td>SSD / NVMe (1TB – 2TB)</td><td>100GB+</td><td>₹9,000 - ₹11,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">🖼️ Specialised Services</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="price-card">
+                <div class="icon"><i class="bi bi-image-fill"></i></div>
+                <h5>Photo Repair / Corrupted Files</h5>
+                <span class="price">₹1,000 – ₹3,000</span>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="price-card">
+                <div class="icon"><i class="bi bi-camera-video-fill"></i></div>
+                <h5>Video Repair / Playback Issues</h5>
+                <span class="price">₹2,000 – ₹5,000</span>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="price-card custom-text-price">
+                <div class="icon"><i class="bi bi-lock-fill"></i></div>
+                <h5>Encrypted Drives / Bitlocker Recovery</h5>
+                <span class="price">Custom quote</span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">📤 Delivery & Media</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="price-card">
+                <div class="icon"><i class="bi bi-truck"></i></div>
+                <h5>Data Transfer to Client's Device</h5>
+                <span class="price">₹500 – ₹1,000</span>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="price-card custom-text-price">
+                <div class="icon"><i class="bi bi-usb-drive-fill"></i></div>
+                <h5>New Pen Drive / HDD (Optional)</h5>
+                <span class="price">At actual market rates</span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">📌 Terms & Conditions</h2>
+    <div class="card-custom" data-aos="fade-up" data-aos-delay="100">
+        <ul class="terms-conditions-list">
+            <li>Data will be securely stored for up to 3 days or until delivery.</li>
+            <li>After this period, all recovered data will be permanently deleted.</li>
+            <li>We are not liable for damage/loss during transit.</li>
+            <li>Clients must verify data at delivery and report issues within 24 hours.</li>
+            <li>By accepting the invoice, client agrees to the above terms.</li>
+            <li>An initial payment of the diagnosis fee must be made before the recovery process begins.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div id="contact" class="card-custom" data-aos="fade-up" data-aos-delay="200">
+      <h3 class="mb-4">📨 Get in Touch</h3>
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name...." required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea class="form-control" id="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <footer data-aos="fade-up" data-aos-delay="200">
+    <div class="container text-center text-md-start">
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>CYFFR Technologies</h5>
+          <p>Data Recovery | Software & Web Development | IT Services</p>
+          <img
+            src="cyfrr-light.png"
+            alt="CYFRR Logo"
+            style="width: 180px; height: 150px; margin-bottom: 10px"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Contact Us</h5>
+          <p><strong>Website:</strong> <a href="https://www.cyfrr.com" target="_blank">www.cyfrr.com</a></p>
+          <p><strong>Email:</strong> <a href="mailto:ck@cyfrr.com">ck@cyfrr.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+917406244916">+91 7406244916</a></p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Our Services</h5>
+          <ul class="list-unstyled">
+            <li>✔ Software & App Development</li>
+            <li>✔ Website Design & Development</li>
+            <li>✔ Computer Repair & Maintenance</li>
+            <li>✔ End-to-End Tech Solutions</li>
+            <li>✔ Data Recovery</li>
+            <li>✔ Tech Consulting</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="text-light" />
+      <div class="text-center small">
+        &copy; 2025 CYFFR Technologies. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // Theme toggle logic (Untouched)
+    const toggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+    const currentTheme = localStorage.getItem("theme") || "light";
+    root.setAttribute("data-bs-theme", currentTheme);
+
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      toggle.textContent = "☀️ Light";
+    }
+
+    toggle.addEventListener("click", () => {
+      const newTheme = root.getAttribute("data-bs-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-bs-theme", newTheme);
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+      localStorage.setItem("theme", newTheme);
+    });
+
+    // --- View Toggle Logic (Untouched, still works for diagnosis/recovery sections) ---
+    document.addEventListener("DOMContentLoaded", () => {
+        const viewToggleButtons = document.querySelectorAll(".view-toggle-buttons .btn");
+
+        viewToggleButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const targetId = this.dataset.viewTarget; // 'diagnosis' or 'recovery'
+                const viewType = this.dataset.viewType; // 'card' or 'table'
+
+                // Store preference in localStorage
+                localStorage.setItem(`viewPreference-${targetId}`, viewType);
+
+                // Update active button state for the current section's buttons
+                document.querySelectorAll(`.view-toggle-buttons button[data-view-target="${targetId}"]`).forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Show/hide views
+                const cardView = document.getElementById(`${targetId}-card-view`);
+                const tableView = document.getElementById(`${targetId}-table-view`);
+
+                if (viewType === 'card') {
+                    cardView.style.display = 'block';
+                    tableView.style.display = 'none';
+                    // Re-initialize AOS for the newly visible cards
+                    AOS.refresh(); 
+                } else {
+                    cardView.style.display = 'none';
+                    tableView.style.display = 'block';
+                    // Re-initialize AOS for the newly visible table (if any was applied)
+                    AOS.refresh();
+                }
+            });
+        });
+
+        // Initialize views based on localStorage or default to card view
+        ['diagnosis', 'recovery'].forEach(sectionId => {
+            const storedPreference = localStorage.getItem(`viewPreference-${sectionId}`) || 'card'; // Default to 'card'
+            const targetButton = document.querySelector(`.view-toggle-buttons button[data-view-target="${sectionId}"][data-view-type="${storedPreference}"]`);
+            if (targetButton) {
+                targetButton.click(); // Simulate click to set initial state
+            } else { // Fallback if no specific button is found for default (e.g., if localStorage is corrupted)
+                document.querySelector(`.view-toggle-buttons button[data-view-target="${sectionId}"][data-view-type="card"]`).click();
+            }
+        });
+    });
+  </script>
+</body>
+</html>

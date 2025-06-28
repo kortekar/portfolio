@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computer Repair & IT Services</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+    }
+    .section-title {
+      border-left: 5px solid #0d6efd;
+      padding-left: 15px;
+      margin-top: 40px;
+      margin-bottom: 3rem; /* More space below titles */
+      font-weight: 700;
+    }
+    .card-custom {
+      background: var(--bs-light-bg-subtle);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease-in-out; /* For hover effect */
+    }
+    .card-custom:hover {
+      transform: translateY(-5px); /* Lift on hover */
+    }
+    .toggle-switch {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 9999;
+    }
+    footer {
+      background-color: #212529;
+      color: #ccc;
+      padding: 40px 0;
+    }
+    footer h5 {
+      color: #ffffff;
+    }
+    footer a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Streamlined styles for a more minimalist look */
+    .hero-section {
+      background-color: var(--bs-tertiary-bg);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px; /* Reduced margin */
+    }
+    .hero-section p {
+      font-size: 1.2rem; /* Slightly smaller */
+      color: var(--bs-secondary-color);
+      max-width: 700px; /* Narrower for focus */
+      margin: 0 auto 40px;
+    }
+
+    /* New service card styling for minimalist display */
+    .service-box {
+        background: var(--bs-body-tertiary);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        min-height: 220px; /* Ensure consistent height for boxes */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .service-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    .service-box .icon {
+        font-size: 3.5rem; /* Larger icons */
+        margin-bottom: 15px;
+        color: var(--bs-primary);
+        line-height: 1; /* Adjust line height for icons */
+    }
+    .service-box h5 {
+        font-weight: 600;
+        margin-bottom: 0; /* No bottom margin on heading */
+        color: var(--bs-emphasis-color);
+    }
+    .service-box p {
+        font-size: 0.95rem; /* Smaller text for description */
+        color: var(--bs-secondary-color);
+        margin-top: 10px;
+    }
+    .horizontal-divider {
+      border: 0;
+      height: 2px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--bs-primary), rgba(0, 0, 0, 0));
+      margin: 60px 0;
+      opacity: 0.15;
+    }
+
+    /* Why Choose Us section specific styles */
+    .feature-item {
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+    .feature-item .icon {
+        font-size: 2.5rem;
+        color: var(--bs-primary);
+        margin-bottom: 15px;
+    }
+    .feature-item h6 {
+        font-weight: 600;
+        color: var(--bs-emphasis-color);
+        margin-bottom: 10px;
+    }
+    .feature-item p {
+        font-size: 0.9rem;
+        color: var(--bs-secondary-color);
+    }
+
+    /* Testimonial section */
+    .testimonial-card {
+        background: var(--bs-body-tertiary);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        text-align: center;
+    }
+    .testimonial-card .quote-icon {
+        font-size: 2.5rem;
+        color: var(--bs-primary);
+        margin-bottom: 15px;
+    }
+    .testimonial-card p {
+        font-style: italic;
+        margin-bottom: 15px;
+        color: var(--bs-body-color);
+    }
+    .testimonial-card .customer-name {
+        font-weight: 600;
+        color: var(--bs-emphasis-color);
+    }
+
+    /* Simple CTA */
+    .cta-section {
+        background-color: var(--bs-primary);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+    }
+    .cta-section h3 {
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .cta-section .btn {
+        background-color: white;
+        color: var(--bs-primary);
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    .cta-section .btn:hover {
+        background-color: var(--bs-dark);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .navbar {
+  height: 80px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar > .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  height: 100%;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand .company-logo {
+  width: 150px;
+  height: 160%;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.navbar-brand div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  color: var(--bs-navbar-color) !important;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin-right: 0.75rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--bs-light) !important;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-nav .nav-link.active {
+  background-color: rgb(var(--bs-primary-rgb)) !important;
+  color: white !important;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  border-color: rgb(var(--bs-primary-rgb)) !important;
+}
+
+.navbar-nav + .theme-toggle {
+  margin-left: 1.5rem !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm" data-aos="fade-down">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#" style="line-height: 1.2;">
+            <img src="Cyfrr-Photoroom.png" alt="CYFRR Logo" class="company-logo" style="width: 150px;"> <div>
+              <strong class="fs-5 text-white">CYFRR</strong>
+              <small class="d-block text-white-50">Computer Maintenance Services</small> </div>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav" aria-controls="navbarNav"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white" aria-current="page" href="cyfrr.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white active" href="computer.html">Computer Maintenance</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="data.html">Data Recovery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="consulting.html">IT Consulting</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+      
+          <span class="ms-3 text-white theme-toggle" id="themeToggle" style="cursor: pointer;">🌙 Dark</span>
+        </div>
+      </nav>
+  
+  <section class="hero-section" data-aos="fade-up">
+    <div class="container">
+      <h1 class="text-body-emphasis">Your Go-To for PC Repair & IT Solutions</h1>
+      <p class="lead">Fast, reliable, and affordable services to keep your technology running smoothly. From diagnostics to upgrades, we've got you covered.</p>
+      <a href="#contact" class="btn btn-primary btn-lg rounded-pill shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+        Get Expert Help Now
+      </a>
+    </div>
+  </section>
+
+  <hr class="horizontal-divider">
+
+  <div class="container py-5">
+    <h2 class="section-title text-center" data-aos="fade-up">Our Core Services</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-cpu"></i></div>
+                <h5>PC Diagnostics & Repair</h5>
+                <p>Troubleshooting, virus removal, OS fixes, and system optimization.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-hdd-fill"></i></div>
+                <h5>Hardware Upgrades</h5>
+                <p>Install RAM, SSDs, GPUs, and other components for better performance.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-wifi"></i></div>
+                <h5>Network Setup & Fixes</h5>
+                <p>Router configuration, Wi-Fi issues, LAN setup, and internet troubleshooting.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-gear-fill"></i></div>
+                <h5>Custom Builds & Assembly</h5>
+                <p>Professional custom PC building tailored to your specific needs.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-windows"></i></div>
+                <h5>Software & OS Support</h5>
+                <p>Installation, updates, and troubleshooting for Windows, Linux, and more.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-printer"></i></div>
+                <h5>Peripherals & Setup</h5>
+                <p>Printer, scanner, webcam, and other device installation and support.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+                <h5>Data Backup & Recovery</h5>
+                <p>Secure data backup solutions and recovery for lost or corrupted files.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="800">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-shield-lock-fill"></i></div>
+                <h5>Cybersecurity Solutions</h5>
+                <p>Protection against malware, phishing, and setting up secure online practices.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="900">
+            <div class="service-box">
+                <div class="icon"><i class="bi bi-person-workspace"></i></div>
+                <h5>Remote & On-site Support</h5>
+                <p>Convenient remote assistance or expert on-site visits for complex issues.</p>
+            </div>
+        </div>
+
+        </div>
+  </div>
+
+  <hr class="horizontal-divider">
+
+  <section class="py-5 bg-body-tertiary">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Why Choose CYFFR Technologies?</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-item">
+            <div class="icon"><i class="bi bi-star-fill"></i></div>
+            <h6>Experienced & Certified</h6>
+            <p>Our technicians are highly skilled and certified, ensuring top-notch service every time.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-item">
+            <div class="icon"><i class="bi bi-cash-stack"></i></div>
+            <h6>Affordable & Transparent</h6>
+            <p>Get clear pricing with no hidden fees. Quality service that fits your budget.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-item">
+            <div class="icon"><i class="bi bi-speedometer2"></i></div>
+            <h6>Fast & Reliable Service</h6>
+            <p>We work efficiently to get your systems back online quickly and reliably.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="horizontal-divider">
+
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">What Our Clients Say</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <div class="quote-icon"><i class="bi bi-chat-quote-fill"></i></div>
+            <p>"CYFFR Technologies saved my laptop! They were incredibly fast and fixed an issue others couldn't. Highly recommend their services for anyone in Bengaluru."</p>
+            <div class="customer-name">- Rajesh K., Small Business Owner</div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <hr class="horizontal-divider">
+
+  <div class="container py-5">
+    <div id="contact" class="card-custom" data-aos="fade-up">
+        <h3 class="mb-4">📨 Get in Touch</h3>
+        <form>
+          <div class="mb-3" data-aos="fade-right" data-aos-delay="100">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name...." required>
+          </div>
+          <div class="mb-3" data-aos="fade-right" data-aos-delay="200">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+          </div>
+          <div class="mb-3" data-aos="fade-right" data-aos-delay="300">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="400">Send Message</button>
+        </form>
+      </div>
+  </div>
+
+  <section class="cta-section" data-aos="zoom-in">
+    <div class="container">
+      <h3>Need Computer Help Right Now?</h3>
+      <p class="lead mb-4">Don't let tech issues slow you down. Our experts are ready to assist!</p>
+      <a href="#contact" class="btn btn-light btn-lg" data-aos="zoom-in" data-aos-delay="200">
+        Contact Us Today
+      </a>
+    </div>
+  </section>
+  
+  <footer data-aos="fade-up" data-aos-delay="200">
+    <div class="container text-center text-md-start">
+        <br>
+        <br>
+      <div class="row">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <h5>CYFFR Technologies</h5>
+          <p>Data Recovery | Software & Web Development | IT Services</p>
+
+
+          <img
+            src="cyfrr-light.png"
+            alt="CYFRR Logo"
+            style="width: 180px; height: 150px; margin-bottom: 10px"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <h5>Contact Us</h5>
+          <p><strong>Website:</strong> <a href="https://www.cyfrr.com" target="_blank">www.cyfrr.com</a></p>
+          <p><strong>Email:</strong> <a href="mailto:ck@cyfrr.com">ck@cyfrr.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+917406244916">+91 7406244916</a></p>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+          <h5>Our Services</h5>
+          <ul class="list-unstyled">
+            <li>✔ Software & App Development</li>
+            <li>✔ Website Design & Development</li>
+            <li>✔ Computer Repair & Maintenance</li>
+            <li>✔ End-to-End Tech Solutions</li>
+            <li>✔ Data Recovery</li>
+            <li>✔ Tech Consulting</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="text-light" />
+      <div class="text-center small" data-aos="fade-up" data-aos-delay="600">
+        &copy; 2025 CYFFR Technologies. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // Theme toggle logic
+    const toggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+    const currentTheme = localStorage.getItem("theme") || "light";
+    root.setAttribute("data-bs-theme", currentTheme);
+
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      toggle.textContent = "☀️ Light";
+    }
+
+    toggle.addEventListener("click", () => {
+      const newTheme = root.getAttribute("data-bs-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-bs-theme", newTheme);
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+      localStorage.setItem("theme", newTheme);
+    });
+  </script>
+</body>
+</html>
